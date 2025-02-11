@@ -15,6 +15,7 @@ func _ready():
 	Score_update(GameScore)
 	%GameOver.visible = false
 	get_tree().paused = false
+	
 func _on_mob_timer_timeout():
 	spawn_mob()
 
