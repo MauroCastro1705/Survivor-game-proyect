@@ -1,6 +1,7 @@
 extends Node2D
 
 var GameScore = 0
+var ScoreMult = Global.scoreMulti
 
 func spawn_mob():
 	var new_mob = preload("res://mob.tscn").instantiate()
@@ -25,5 +26,5 @@ func Score_update(GameScore):
 	%ScoreLabel.text = "Score : " + str(GameScore)
 
 func Score_increment():
-	GameScore += 1
+	GameScore += 1 * ScoreMult
 	Score_update(GameScore)

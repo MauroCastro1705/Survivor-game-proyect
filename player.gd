@@ -1,7 +1,6 @@
 extends CharacterBody2D
 signal health_depleted
-var health = 100.0
-var player_AtkDmg = 5
+var health = Global.playerHealth
 
 
 func _physics_process(delta):
@@ -19,7 +18,8 @@ func _physics_process(delta):
 	if overlapping_mobs.size() > 0:
 		health -= DAMAGE_RATE * overlapping_mobs.size() * delta
 		%ProgressBar.value = health
-		%ProgressBar.max_value = 100
+		%ProgressBar.max_value = Global.playerHealth
 		if health <= 0.0:
 			health_depleted.emit()
+			print("Player dead")
 			

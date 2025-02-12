@@ -2,7 +2,9 @@ extends CharacterBody2D
 
 var player
 var health = Global.mobHealth
-var dmgTaken = Global.playerAtkDmg
+var dmgDone = Global.playerAtkDmg
+var dmgMulti = Global.playerAtkDmgMulti
+
 signal mob_muere
 
 
@@ -20,19 +22,16 @@ func _physics_process(delta):
 	
 func take_damage():
 	%Slime.play_hurt()
-	health -= dmgTaken
-	print("vida mob= " + str(health))
-	print("daño= " + str(dmgTaken))
+	health -= dmgDone * dmgMulti
+	
 		
-	if health == 0:
+	if health <= 0:
 		mob_muere.emit()
 		queue_free()
 		const SMOKE_SCENE = preload("res://smoke_explosion/smoke_explosion.tscn")
 		var smoke = SMOKE_SCENE.instantiate()
 		get_parent().add_child(smoke)
 		smoke.global_position = global_position
-
-	
 
 
 func _on_mob_muere() -> void:
