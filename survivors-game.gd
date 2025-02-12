@@ -3,6 +3,8 @@ extends Node2D
 var GameScore = 0
 var ScoreMult = Global.scoreMulti
 
+var NivelPj = Global.playerLEVEL
+
 func spawn_mob():
 	var new_mob = preload("res://mob.tscn").instantiate()
 	new_mob.mob_muere.connect(Score_increment)
@@ -24,6 +26,7 @@ func _on_player_health_depleted():
 
 func Score_update(GameScore):
 	%ScoreLabel.text = "Score : " + str(GameScore)
+	%NivelLabel.text = "Nivel : " + str(NivelPj)
 
 func Score_increment():
 	GameScore += 1 * ScoreMult

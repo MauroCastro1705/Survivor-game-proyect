@@ -52,6 +52,16 @@ theme_override_font_sizes/font_size = 50
 text = "Score :"
 uppercase = true
 
+[node name="NivelLabel" type="Label" parent="Player"]
+unique_name_in_owner = true
+offset_left = -742.0
+offset_top = -363.0
+offset_right = -607.0
+offset_bottom = -321.0
+theme_override_colors/font_color = Color(0.0220673, 0.032571, 0.0284656, 1)
+theme_override_font_sizes/font_size = 30
+text = "NIVELEEE"
+
 [node name="Path2D" type="Path2D" parent="Player"]
 position = Vector2(-798, -485)
 curve = SubResource("Curve2D_2xplw")

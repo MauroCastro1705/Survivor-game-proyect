@@ -4,6 +4,7 @@ var player
 var health = Global.mobHealth
 var dmgDone = Global.playerAtkDmg
 var dmgMulti = Global.playerAtkDmgMulti
+var mobExp = 12
 
 signal mob_muere
 
@@ -22,7 +23,7 @@ func _physics_process(delta):
 	
 func take_damage():
 	%Slime.play_hurt()
-	health -= dmgDone * dmgMulti
+	health -= dmgDone
 	
 		
 	if health <= 0:
@@ -36,3 +37,5 @@ func take_damage():
 
 func _on_mob_muere() -> void:
 	print("señal muerte")
+	Global.ADD_EXP(mobExp)
+	print("add_exp " , mobExp)
