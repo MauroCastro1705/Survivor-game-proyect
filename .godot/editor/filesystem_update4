@@ -4,3 +4,4 @@ res://player.tscn
 res://game_over.tscn
 res://MainMenu.tscn
 res://survivors-game.gd
+res://game_over.gd

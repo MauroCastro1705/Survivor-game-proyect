@@ -92,4 +92,15 @@ theme_override_fonts/font = ExtResource("3_vnk54")
 theme_override_font_sizes/font_size = 37
 text = "Estos son los mejores 10"
 
+[node name="TOP10" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 746.0
+offset_top = 385.0
+offset_right = 1417.0
+offset_bottom = 839.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "xdfsdfsdfsdfsdfsdfvxcvsdvxcv"
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
