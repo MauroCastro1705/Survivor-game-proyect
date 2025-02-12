@@ -13,16 +13,13 @@ func spawn_mob():
 func _ready():
 	var GameScore = 0
 	Score_update(GameScore)
-	%GameOver.visible = false
 	get_tree().paused = false
 	
 func _on_mob_timer_timeout():
 	spawn_mob()
 
-
 func _on_player_health_depleted():
-	%GameOver.visible = true
-	get_tree().paused = true
+	get_tree().change_scene_to_file("res://game_over.tscn")
 
 func Score_update(GameScore):
 	%ScoreLabel.text = "Score : " + str(GameScore)
@@ -30,6 +27,3 @@ func Score_update(GameScore):
 func Score_increment():
 	GameScore += 1
 	Score_update(GameScore)
-
-func _on_button_pressed():
-	get_tree().reload_current_scene()

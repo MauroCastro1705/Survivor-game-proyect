@@ -1,6 +1,12 @@
 res://survivors-game.tscn
+res://mob.tscn
+res://MainMenu.tscn
+res://main_menu.gd
+res://player.gd
+res://gun.tscn
+res://game_over.gd
+res://game_over.tscn
 res://survivors-game.gd
 res://mob.gd
-res://mob.tscn
+res://player.tscn
 res://global.gd
-res://player.gd

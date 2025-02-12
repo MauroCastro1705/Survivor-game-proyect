@@ -1,6 +1,8 @@
 extends CharacterBody2D
 signal health_depleted
 var health = 100.0
+var player_AtkDmg = 5
+
 
 func _physics_process(delta):
 	var direction = Input.get_vector("move_left","move_right","move_up","move_down")
@@ -12,7 +14,7 @@ func _physics_process(delta):
 	else:
 		%HappyBoo.play_idle_animation()
 		
-	const DAMAGE_RATE = 8.0
+	const DAMAGE_RATE = 12.0
 	var overlapping_mobs = %hurtBox.get_overlapping_bodies()
 	if overlapping_mobs.size() > 0:
 		health -= DAMAGE_RATE * overlapping_mobs.size() * delta
@@ -20,3 +22,4 @@ func _physics_process(delta):
 		%ProgressBar.max_value = 100
 		if health <= 0.0:
 			health_depleted.emit()
+			

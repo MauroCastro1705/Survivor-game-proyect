@@ -1,12 +1,15 @@
 extends CharacterBody2D
 
 var player
-var health = 3
+var health = Global.mobHealth
+var dmgTaken = Global.playerAtkDmg
 signal mob_muere
+
 
 func _ready():
 	player = get_node("/root/Game/Player")
 	%Slime.play_walk()
+
 
 
 func _physics_process(delta):
@@ -17,7 +20,9 @@ func _physics_process(delta):
 	
 func take_damage():
 	%Slime.play_hurt()
-	health -= 1
+	health -= dmgTaken
+	print("vida mob= " + str(health))
+	print("daño= " + str(dmgTaken))
 		
 	if health == 0:
 		mob_muere.emit()
