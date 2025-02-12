@@ -24,6 +24,7 @@ func _on_player_health_depleted():
 func Score_update(GameScore):
 	%ScoreLabel.text = "Score : " + str(GameScore)
 	%NivelLabel.text = "Jugador nivel : " + str(Global.playerLEVEL)
+	%PlayerName.text = "Jugardor : " + Global.playerNAME
 
 func Score_increment():
 	var ScoreMult = Global.scoreMulti	

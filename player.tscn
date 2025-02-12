@@ -11,6 +11,7 @@ radius = 46.0109
 radius = 50.01
 
 [sub_resource type="SystemFont" id="SystemFont_4u571"]
+subpixel_positioning = 0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7jppe"]
 bg_color = Color(0.124396, 0.198113, 0.129093, 1)
