@@ -25,7 +25,7 @@ func _physics_process(delta):
 			health_depleted.emit()
 			print("Player dead")
 			Global.save_high_score(Global.playerNAME, Global.playerScore, Global.playerLEVEL)
-			get_tree().change_scene_to_file("res://highscore_screen.tscn")  # Ir a la pantalla de high scores
+			#get_tree().change_scene_to_file("res://highscore_screen.tscn")  # Ir a la pantalla de high scores
 			
 		
 		
