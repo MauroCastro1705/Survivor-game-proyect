@@ -24,9 +24,10 @@ func ADD_EXP(amount):
 func LVL_UP():
 	playerExp -= expToLvlUp
 	playerLEVEL += 1
-	expToLvlUp += 50
-	playerMaxHealth += 25.0
-	playerAtkDmg += 1
+	expToLvlUp = round(expToLvlUp * 1.2)  # Incremento del 20% en cada nivel
+	playerMaxHealth += 20 + (playerLEVEL * 5)
+	playerAtkDmg += 1 + (playerLEVEL * 0.2)
+	playerHealth = playerMaxHealth
 	print("subio a nivel = " , playerLEVEL)
 	print("VIDA SUBIO a" , playerMaxHealth)
 	
