@@ -28,4 +28,5 @@ func Score_update(GameScore):
 func Score_increment():
 	var ScoreMult = Global.scoreMulti	
 	GameScore += 1 * ScoreMult
+	Global.playerScore = GameScore
 	Score_update(GameScore)
