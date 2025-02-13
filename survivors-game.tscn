@@ -160,7 +160,6 @@ theme = ExtResource("6_cbym3")
 theme_override_colors/default_color = Color(0.00267306, 0.00160861, 0.00121245, 1)
 theme_override_fonts/normal_font = ExtResource("5_12y4p")
 bbcode_enabled = true
-text = "los mobs vienen mas rapido!!"
 fit_content = true
 scroll_active = false
 

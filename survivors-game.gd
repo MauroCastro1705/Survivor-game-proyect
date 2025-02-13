@@ -1,8 +1,9 @@
 extends Node2D
 
 var GameScore = 0
+var mobsSpawned = 0
 
-func spawn_mob():
+func spawn_mob():	
 	var new_mob = preload("res://mob.tscn").instantiate()
 	new_mob.mob_muere.connect(Score_increment)
 	%PathFollow2D.progress_ratio = randf()
@@ -10,16 +11,9 @@ func spawn_mob():
 	add_child(new_mob)
 	
 	
-func _ready():
-	var GameScore = 0
-	Score_update(GameScore)
-	get_tree().paused = false
 
-###### MOB TIMER DIFICULTY SETTINGS
-func _on_mob_timer_timeout():
-	var mobsSpawned = 0
-	var msg = ""
-	spawn_mob()
+
+func incrementar_counter():
 	mobsSpawned += 1
 	if mobsSpawned == 15:
 		%MobTimer.wait_time = 0.4
@@ -31,11 +25,23 @@ func _on_mob_timer_timeout():
 		%MobTimer.wait_time = 0.26
 		show_alert("Los mobs vienen muchisimo mas rapido!")
 		
-func show_alert(msg):
+func show_alert(msg: String):
 	$%MobSpawnAlert.text = msg
+	print("mobs mas rapidos 1")
 	$%MobSpawnAlert.visible = true
 	await get_tree().create_timer(3).timeout
 	$%MobSpawnAlert.visible = false
+	
+	
+func _ready():
+	var GameScore = 0
+	Score_update(GameScore)
+	get_tree().paused = false
+
+
+func _on_mob_timer_timeout():
+	spawn_mob()
+	incrementar_counter()
 
 
 func _on_player_health_depleted():
