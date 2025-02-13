@@ -1,7 +1,7 @@
 extends Node2D
 
 var GameScore = 0
-var mobsSpawned = 0
+var mobsSpawnVelocity = 0
 
 func spawn_mob():	
 	var new_mob = preload("res://mob.tscn").instantiate()
@@ -14,20 +14,20 @@ func spawn_mob():
 
 
 func incrementar_counter():
-	mobsSpawned += 1
-	if mobsSpawned == 15:
+	var dificultad = Global.playerLEVEL
+	mobsSpawnVelocity += 1
+	if dificultad == 3:
 		%MobTimer.wait_time = 0.4
 		show_alert("Los mobs vienen mas rapido!")
-	if mobsSpawned == 35:
+	if dificultad == 7:
 		%MobTimer.wait_time = 0.32
 		show_alert("Los mobs vienen aun mas rapido!")
-	if mobsSpawned == 67:
+	if dificultad == 12:
 		%MobTimer.wait_time = 0.26
 		show_alert("Los mobs vienen muchisimo mas rapido!")
 		
 func show_alert(msg: String):
 	$%MobSpawnAlert.text = msg
-	print("mobs mas rapidos 1")
 	$%MobSpawnAlert.visible = true
 	await get_tree().create_timer(3).timeout
 	$%MobSpawnAlert.visible = false
