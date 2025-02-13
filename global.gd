@@ -2,17 +2,25 @@ extends Node
 
 var playerNAME = "jugador"
 
+#player vars
 var playerAtkDmg = 1.0
 var playerAtkDmgMulti = 1.0
 var playerHealth = 100.0
 var playerMaxHealth = 100.0
 
+var playerCritChance = 1
+var playerHPREGEN = 0.0
+var playerMovSpeed = 600
+
+#mob vars
 var mobHealth = 3.0
 var mobExpValue = 12
+var mobDmgRate = 12.0
 
 var playerScore = 0
 var scoreMulti = 1.0
 
+#player LEVEL vars
 var playerLEVEL = 1
 var playerExp = 0
 var expToLvlUp = 100
@@ -33,6 +41,10 @@ func LVL_UP():
 	playerHealth = playerMaxHealth
 	print("subio a nivel = " , playerLEVEL)
 	print("VIDA SUBIO a" , playerMaxHealth)
+	
+	
+	
+	
 	
 	#SAVE DATA TOP PLAYERS
 const SAVE_FILE = "user://highscores.json"

@@ -36,6 +36,5 @@ func take_damage():
 
 
 func _on_mob_muere() -> void:
-	print("señal muerte")
+	print("señal mob muerte")
 	Global.ADD_EXP(mobExp)
-	print("add_exp " , mobExp)

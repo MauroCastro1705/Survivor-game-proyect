@@ -1,8 +1,9 @@
+RichTextLabel
 Label
+ColorRect
 LineEdit
 ProgressBar
 Button
-ColorRect
 CanvasLayer
 Timer
 PathFollow2D

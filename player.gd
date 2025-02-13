@@ -3,9 +3,12 @@ signal health_depleted
 var health = Global.playerHealth
 
 func _physics_process(delta):	
-	var VIDAMAXIMA = Global.playerMaxHealth
+	%LevelBar.value = Global.playerExp
+	%LevelBar.max_value = Global.expToLvlUp
+	
 	var direction = Input.get_vector("move_left","move_right","move_up","move_down")
-	velocity = direction * 600
+	var movSpeed = Global.playerMovSpeed
+	velocity = direction * movSpeed
 	move_and_slide()
 	
 	if velocity.length()> 0.0:
@@ -13,25 +16,16 @@ func _physics_process(delta):
 	else:
 		%HappyBoo.play_idle_animation()
 		
-	const DAMAGE_RATE = 12.0
+	var DAMAGE_RATE = Global.mobDmgRate
 	var overlapping_mobs = %hurtBox.get_overlapping_bodies()
 	if overlapping_mobs.size() > 0:
 		health -= DAMAGE_RATE * overlapping_mobs.size() * delta
 		%ProgressBar.value = health
-		%ProgressBar.max_value = VIDAMAXIMA
-		#print("health " , health)
-		#print("MAXhealth " , VIDAMAXIMA)
+		
 		if health <= 0.0:
 			health_depleted.emit()
 			print("Player dead")
 			Global.save_high_score(Global.playerNAME, Global.playerScore, Global.playerLEVEL)
-			#get_tree().change_scene_to_file("res://highscore_screen.tscn")  # Ir a la pantalla de high scores
 			
-		
-		
-	%LevelBar.value = Global.playerExp
-	%LevelBar.max_value = Global.expToLvlUp
-	%valorVida.text = str(round(health)) + " / " + str(VIDAMAXIMA)
-
-		
-			
+	%ProgressBar.max_value = Global.playerMaxHealth
+	%valorVida.text = str(round(health)) + " / " + str(round(Global.playerMaxHealth))

@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c08om84k0pbuj"]
+[gd_scene load_steps=8 format=3 uid="uid://c08om84k0pbuj"]
 
 [ext_resource type="PackedScene" uid="uid://ct6ctnfjhwh25" path="res://player.tscn" id="1_f7jjx"]
 [ext_resource type="Script" path="res://survivors-game.gd" id="1_xmhyq"]
 [ext_resource type="PackedScene" uid="uid://cearkefpglmtm" path="res://Pinetree.tscn" id="2_3lypo"]
 [ext_resource type="FontFile" uid="uid://clbly8xqr7kxw" path="res://fonts/Mindsight.ttf" id="4_jyqj4"]
+[ext_resource type="FontFile" uid="uid://bdxdtkcxpa08s" path="res://fonts/Blacknorthdemo-mLE25.otf" id="5_12y4p"]
+[ext_resource type="Theme" uid="uid://dedmc73m6he8n" path="res://texto_basico.tres" id="6_cbym3"]
 
 [sub_resource type="Curve2D" id="Curve2D_2xplw"]
 _data = {
@@ -52,16 +54,6 @@ theme_override_font_sizes/font_size = 50
 text = "Score :"
 uppercase = true
 
-[node name="NivelLabel" type="Label" parent="Player"]
-unique_name_in_owner = true
-offset_left = -836.0
-offset_top = -394.0
-offset_right = -701.0
-offset_bottom = -352.0
-theme_override_colors/font_color = Color(0.0220673, 0.032571, 0.0284656, 1)
-theme_override_font_sizes/font_size = 30
-text = "NIVELEEE"
-
 [node name="PlayerName" type="Label" parent="Player"]
 unique_name_in_owner = true
 anchors_preset = 8
@@ -79,6 +71,72 @@ theme_override_colors/font_color = Color(0.00792371, 0.0169789, 0.0128233, 1)
 theme_override_font_sizes/font_size = 40
 text = "jugador"
 
+[node name="ColorRect" type="ColorRect" parent="Player"]
+offset_left = -919.0
+offset_top = 285.0
+offset_right = -735.0
+offset_bottom = 500.0
+color = Color(0.396078, 0.396078, 0.396078, 0.498039)
+
+[node name="Label" type="Label" parent="Player/ColorRect"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 7.0
+offset_right = 108.0
+offset_bottom = 30.0
+text = "Stats"
+
+[node name="statDaño" type="Label" parent="Player/ColorRect"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 18.0
+offset_top = 86.0
+offset_right = 59.0
+offset_bottom = 109.0
+text = "Daño"
+
+[node name="statCrit" type="Label" parent="Player/ColorRect"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 16.0
+offset_top = 117.0
+offset_right = 103.0
+offset_bottom = 140.0
+text = "Crit chance
+"
+
+[node name="statHpRegen" type="Label" parent="Player/ColorRect"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 15.0
+offset_top = 145.0
+offset_right = 102.0
+offset_bottom = 168.0
+text = "Hp regen
+"
+
+[node name="statMovSpeed" type="Label" parent="Player/ColorRect"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 16.0
+offset_top = 174.0
+offset_right = 103.0
+offset_bottom = 197.0
+text = "Mov speed
+"
+
+[node name="NivelLabel" type="Label" parent="Player/ColorRect"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 17.0
+offset_top = 55.0
+offset_right = 152.0
+offset_bottom = 97.0
+theme_override_colors/font_color = Color(0.0220673, 0.032571, 0.0284656, 1)
+theme_override_fonts/font = ExtResource("5_12y4p")
+theme_override_font_sizes/font_size = 20
+text = "NIVELEEE"
+
 [node name="Path2D" type="Path2D" parent="Player"]
 position = Vector2(-798, -485)
 curve = SubResource("Curve2D_2xplw")
@@ -88,7 +146,26 @@ unique_name_in_owner = true
 position = Vector2(21, -106)
 rotation = 0.0286807
 
+[node name="MobSpawnAlert" type="RichTextLabel" parent="Player"]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -170.0
+offset_top = -292.0
+offset_right = 347.0
+offset_bottom = -229.0
+grow_horizontal = 2
+theme = ExtResource("6_cbym3")
+theme_override_colors/default_color = Color(0.00267306, 0.00160861, 0.00121245, 1)
+theme_override_fonts/normal_font = ExtResource("5_12y4p")
+bbcode_enabled = true
+text = "los mobs vienen mas rapido!!"
+fit_content = true
+scroll_active = false
+
 [node name="MobTimer" type="Timer" parent="."]
+unique_name_in_owner = true
 wait_time = 0.608
 autostart = true
 
