@@ -4,11 +4,11 @@ var playerNAME = "jugador"
 
 #player vars
 var playerAtkDmg = 1.0
-var playerAtkDmgMulti = 1.0
 var playerHealth = 100.0
 var playerMaxHealth = 100.0
 
-var playerCritChance = 1
+var playerCritChance : float = 0.25
+var playerCritMulti : float = 2.0
 var playerHPREGEN = 0.0
 var playerMovSpeed = 600
 

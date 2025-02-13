@@ -8,3 +8,5 @@ res://survivors-game.gd
 res://player.gd
 res://gun.tscn
 res://mob.gd
+res://crit_dmg_label.tscn
+res://Global_criticos.gd

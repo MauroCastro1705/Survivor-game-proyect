@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1yh53icotlu5"]
+
+[ext_resource type="FontFile" uid="uid://clbly8xqr7kxw" path="res://fonts/Mindsight.ttf" id="1_js1yv"]
+
+[node name="critDmgLabel" type="Label"]
+unique_name_in_owner = true
+offset_left = -48.0
+offset_top = -109.0
+offset_right = 49.0
+offset_bottom = -86.0
+theme_override_colors/font_color = Color(0.863192, 0.276958, 0.20519, 1)
+theme_override_fonts/font = ExtResource("1_js1yv")
+theme_override_font_sizes/font_size = 18
+text = " "
+horizontal_alignment = 1
+vertical_alignment = 1

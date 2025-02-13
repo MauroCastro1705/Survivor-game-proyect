@@ -1,7 +1,6 @@
 extends Node2D
 
 var GameScore = 0
-var mobsSpawnVelocity = 0
 
 func spawn_mob():	
 	var new_mob = preload("res://mob.tscn").instantiate()
@@ -9,13 +8,9 @@ func spawn_mob():
 	%PathFollow2D.progress_ratio = randf()
 	new_mob.global_position = %PathFollow2D.global_position
 	add_child(new_mob)
-	
-	
 
-
-func incrementar_counter():
+func incrementar_dificultad():
 	var dificultad = Global.playerLEVEL
-	mobsSpawnVelocity += 1
 	if dificultad == 3:
 		%MobTimer.wait_time = 0.4
 		show_alert("Los mobs vienen mas rapido!")
@@ -27,10 +22,10 @@ func incrementar_counter():
 		show_alert("Los mobs vienen muchisimo mas rapido!")
 		
 func show_alert(msg: String):
-	$%MobSpawnAlert.text = msg
-	$%MobSpawnAlert.visible = true
+	%MobSpawnAlert.text = msg
+	%MobSpawnAlert.visible = true
 	await get_tree().create_timer(3).timeout
-	$%MobSpawnAlert.visible = false
+	%MobSpawnAlert.visible = false
 	
 	
 func _ready():
@@ -38,11 +33,9 @@ func _ready():
 	Score_update(GameScore)
 	get_tree().paused = false
 
-
 func _on_mob_timer_timeout():
 	spawn_mob()
-	incrementar_counter()
-
+	incrementar_dificultad()
 
 func _on_player_health_depleted():
 	get_tree().change_scene_to_file("res://game_over.tscn")

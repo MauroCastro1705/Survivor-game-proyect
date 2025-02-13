@@ -72,6 +72,9 @@ theme_override_font_sizes/font_size = 40
 text = "jugador"
 
 [node name="ColorRect" type="ColorRect" parent="Player"]
+z_index = 20
+z_as_relative = false
+y_sort_enabled = true
 offset_left = -919.0
 offset_top = 285.0
 offset_right = -735.0
