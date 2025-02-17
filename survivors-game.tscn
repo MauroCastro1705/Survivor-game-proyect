@@ -189,6 +189,11 @@ autostart = true
 [node name="CoinTimer" type="Timer" parent="."]
 autostart = true
 
+[node name="TreeTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="CoinTimer" to="." method="_on_coin_timer_timeout"]
+[connection signal="timeout" from="TreeTimer" to="." method="_on_tree_timer_timeout"]

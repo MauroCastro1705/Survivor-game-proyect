@@ -79,3 +79,11 @@ func Score_increment():
 func _on_coin_timer_timeout() -> void:
 	spaw_health_coins()
 	spaw_speed_coins()
+
+
+#tree spawner
+func _on_tree_timer_timeout() -> void:
+		var new_tree = preload("res://Pinetree.tscn").instantiate()
+		%CoinPathFollow2D.progress_ratio = randf()
+		new_tree.global_position = %CoinPathFollow2D.global_position
+		add_child(new_tree)
