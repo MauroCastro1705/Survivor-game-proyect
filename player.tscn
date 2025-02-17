@@ -76,12 +76,12 @@ show_percentage = false
 
 [node name="LevelBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
-offset_left = -120.0
-offset_top = -145.0
-offset_right = 82.0
-offset_bottom = -127.0
-scale = Vector2(1.17332, 1.70815)
-theme_override_font_sizes/font_size = 13
+offset_left = -126.0
+offset_top = -144.0
+offset_right = 238.0
+offset_bottom = -116.0
+scale = Vector2(0.687, 1)
+theme_override_font_sizes/font_size = 22
 theme_override_styles/background = SubResource("StyleBoxFlat_u78nl")
 theme_override_styles/fill = SubResource("StyleBoxFlat_8kf8r")
 value = 34.0
@@ -96,7 +96,7 @@ anchor_bottom = 0.5
 offset_left = -24.0
 offset_top = -178.0
 offset_right = 40.0
-offset_bottom = -101.0
+offset_bottom = -153.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "ALGO"

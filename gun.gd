@@ -4,7 +4,8 @@ func _physics_process(_delta):
 	if enemies_in_range.size()>0:
 		var target_enemy = enemies_in_range[0]
 		look_at(target_enemy.global_position)
-
+	$atkSpeedTimer.wait_time = Global.playerAtkSpeed
+	
 func shoot():
 	const BULLET = preload("res://bullet.tscn")
 	var new_bullet = BULLET.instantiate()

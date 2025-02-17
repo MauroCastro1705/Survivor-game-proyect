@@ -5,7 +5,7 @@ var GameScore = 0
 
 
 func spaw_health_coins():
-	if Global.HealthCoinsOnScreen < 2:
+	if Global.HealthCoinsOnScreen <= 2:
 		var new_coin = preload("res://PowerUpCoin.tscn").instantiate()
 		%CoinPathFollow2D.progress_ratio = randf()
 		new_coin.global_position = %CoinPathFollow2D.global_position
@@ -13,12 +13,20 @@ func spaw_health_coins():
 		Global.HealthCoinsOnScreen += 1
 
 func spaw_speed_coins():
-	if Global.SpeedCoinsOnScreen < 2:
+	if Global.SpeedCoinsOnScreen <= 2:
 		var new_speed_coin = preload("res://PowerSpeedUpCoin.tscn").instantiate()
 		%CoinPathFollow2D.progress_ratio = randf()
 		new_speed_coin.global_position = %CoinPathFollow2D.global_position
 		add_child(new_speed_coin)
 		Global.SpeedCoinsOnScreen += 1
+
+func spawn_atk_speed_coins():
+	if Global.AtkSpeedCoinsOnScreen <= 2:
+		var new_atk_speed_coin = preload("res://power_up_atk_speed_coin.tscn").instantiate()
+		%CoinPathFollow2D.progress_ratio = randf()
+		new_atk_speed_coin.global_position = %CoinPathFollow2D.global_position
+		add_child(new_atk_speed_coin)
+		Global.AtkSpeedCoinsOnScreen += 1
 
 func spawn_mob():	
 	var new_mob = preload("res://mob.tscn").instantiate()
@@ -30,13 +38,13 @@ func spawn_mob():
 func incrementar_dificultad():
 	var dificultad = Global.playerLEVEL
 	if dificultad == 3:
-		%MobTimer.wait_time = 0.4
+		%MobTimer.wait_time = 0.3
 		show_alert("Los mobs vienen mas rapido!")
 	if dificultad == 7:
-		%MobTimer.wait_time = 0.32
+		%MobTimer.wait_time = 0.2
 		show_alert("Los mobs vienen aun mas rapido!")
 	if dificultad == 12:
-		%MobTimer.wait_time = 0.26
+		%MobTimer.wait_time = 0.1
 		show_alert("Los mobs vienen muchisimo mas rapido!")
 		
 func show_alert(msg: String):
@@ -53,6 +61,10 @@ func _ready():
 	Global.HealthCoinsOnScreen = 0
 	Global.SpeedCoinsOnScreen = 0
 
+
+func _physics_process(_delta):
+	Global.MOB_DAMAGE()
+
 func _on_mob_timer_timeout():
 	spawn_mob()
 	incrementar_dificultad()
@@ -66,11 +78,11 @@ func Score_update(GameScore):
 	%PlayerName.text = "Jugardor : " + Global.playerNAME
 	%"statDaño".text = "Daño : " + str(Global.playerAtkDmg)
 	%"statCrit".text = "Crit Chance : " + str(Global.playerCritChance)
-	%"statHpRegen".text = "Hp Regen : " + str(Global.playerHPREGEN)
+	%"statAtkSpeed".text = "Atk Speed : " + str(Global.playerAtkSpeed)
 	%"statMovSpeed".text = "Move Speed : " + str(Global.playerMovSpeed)
 
 func Score_increment():
-	var ScoreMult = Global.scoreMulti	
+	var ScoreMult = Global.scoreMulti #revisar esto	
 	GameScore += 1 * ScoreMult
 	Global.playerScore = GameScore
 	Score_update(GameScore)
@@ -79,6 +91,7 @@ func Score_increment():
 func _on_coin_timer_timeout() -> void:
 	spaw_health_coins()
 	spaw_speed_coins()
+	spawn_atk_speed_coins()
 
 
 #tree spawner

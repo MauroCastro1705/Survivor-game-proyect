@@ -2,7 +2,7 @@ extends Node
 
 var playerNAME = "jugador"
 
-#player vars
+####### player vars ######
 var playerAtkDmg = 1.0
 var playerHealth = 100.0
 var playerMaxHealth = 100.0
@@ -11,6 +11,7 @@ var playerCritChance : float = 0.25
 var playerCritMulti : float = 2.0
 var playerHPREGEN = 0.0
 var playerMovSpeed : int = 600
+var playerAtkSpeed : float = 0.4
 
 #mob vars
 var mobHealth = 3.0
@@ -25,9 +26,35 @@ var playerLEVEL = 1
 var playerExp = 0
 var expToLvlUp = 100
 
-#COINS
+#COINS ######
 var HealthCoinsOnScreen = 0
 var SpeedCoinsOnScreen = 0 
+var AtkSpeedCoinsOnScreen = 0
+#valores que aumentan los coins ######
+var HealthCoinValue = 25
+var SpeedCoinValue = 100
+var AtkSpeedCoinValue = 0.02
+#### Coin funcs ######
+func HEALTH_COIN():
+	playerHealth = min(playerHealth + HealthCoinValue, playerMaxHealth)
+	if HealthCoinsOnScreen > 0:
+		HealthCoinsOnScreen -= 1
+	print("mas vida")
+
+func ATK_SPD_COIN():
+	playerAtkSpeed -= AtkSpeedCoinValue
+	if AtkSpeedCoinsOnScreen > 0:
+		AtkSpeedCoinsOnScreen -= 1
+	print("mas atk speed")
+
+func SPEED_COIN():
+	playerMovSpeed += SpeedCoinValue
+	if SpeedCoinsOnScreen > 0:
+		SpeedCoinsOnScreen -= 1
+	print("mas velocidad")
+
+
+
 
 func ADD_EXP(amount):
 	playerExp += amount
@@ -41,7 +68,7 @@ func LVL_UP():
 	playerLEVEL += 1
 	expToLvlUp = round(expToLvlUp * 1.2)  # Incremento del 20% en cada nivel
 	playerMaxHealth += 20 + (playerLEVEL * 5)
-	playerAtkDmg += 1 + (playerLEVEL * 0.2)
+	playerAtkDmg += 1 + (playerLEVEL * 0.1)
 	playerHealth = playerMaxHealth
 	print("subio a nivel = " , playerLEVEL)
 	print("VIDA SUBIO a" , playerMaxHealth)
@@ -50,7 +77,7 @@ func LVL_UP():
 	
 	
 	
-	#SAVE DATA TOP PLAYERS
+	#SAVE DATA TOP PLAYERS######
 const SAVE_FILE = "user://highscores.json"
 func save_high_score(player_name, score, level):
 	var high_scores = load_high_scores()  # Cargar puntajes anteriores
@@ -72,3 +99,30 @@ func load_high_scores():
 		if data is Array:
 			return data
 	return []  # Si no hay archivo, devuelve una lista vacía
+
+
+func MOB_DAMAGE():
+	if playerLEVEL > 5:
+		mobDmgRate = 12.0 + (playerLEVEL * 2)
+	else:
+		mobDmgRate = 12.0
+		if playerLEVEL > 10:
+			mobDmgRate = 12.0 + (playerLEVEL * 3)
+		else:
+			mobDmgRate = 12.0
+			if playerLEVEL > 15:
+				mobDmgRate = 12.0 + (playerLEVEL * 4)
+			else:
+				mobDmgRate = 12.0
+				if playerLEVEL > 20:
+					mobDmgRate = 12.0 + (playerLEVEL * 5)
+				else:
+					mobDmgRate = 12.0
+					if playerLEVEL > 25:
+						mobDmgRate = 12.0 + (playerLEVEL * 6)
+					else:
+						mobDmgRate = 12.0
+						if playerLEVEL > 30:
+							mobDmgRate = 12.0 + (playerLEVEL * 7)
+						else:
+							mobDmgRate = 12.0
