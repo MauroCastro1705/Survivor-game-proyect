@@ -15,3 +15,4 @@ func SHOW_CRIT(mob_position: Vector2):
 		tween.parallel().tween_property(crit_label_mob, "position:y", crit_label_mob.position.y - 20, 1.5)  # Subir 20px en 1.5s
 		await tween.finished
 		crit_label_mob.queue_free()
+		

@@ -2,6 +2,24 @@ extends Node2D
 
 var GameScore = 0
 
+
+
+func spaw_health_coins():
+	if Global.HealthCoinsOnScreen < 2:
+		var new_coin = preload("res://PowerUpCoin.tscn").instantiate()
+		%CoinPathFollow2D.progress_ratio = randf()
+		new_coin.global_position = %CoinPathFollow2D.global_position
+		add_child(new_coin)
+		Global.HealthCoinsOnScreen += 1
+
+func spaw_speed_coins():
+	if Global.SpeedCoinsOnScreen < 2:
+		var new_speed_coin = preload("res://PowerSpeedUpCoin.tscn").instantiate()
+		%CoinPathFollow2D.progress_ratio = randf()
+		new_speed_coin.global_position = %CoinPathFollow2D.global_position
+		add_child(new_speed_coin)
+		Global.SpeedCoinsOnScreen += 1
+
 func spawn_mob():	
 	var new_mob = preload("res://mob.tscn").instantiate()
 	new_mob.mob_muere.connect(Score_increment)
@@ -32,6 +50,8 @@ func _ready():
 	var GameScore = 0
 	Score_update(GameScore)
 	get_tree().paused = false
+	Global.HealthCoinsOnScreen = 0
+	Global.SpeedCoinsOnScreen = 0
 
 func _on_mob_timer_timeout():
 	spawn_mob()
@@ -54,3 +74,8 @@ func Score_increment():
 	GameScore += 1 * ScoreMult
 	Global.playerScore = GameScore
 	Score_update(GameScore)
+
+
+func _on_coin_timer_timeout() -> void:
+	spaw_health_coins()
+	spaw_speed_coins()

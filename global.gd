@@ -10,7 +10,7 @@ var playerMaxHealth = 100.0
 var playerCritChance : float = 0.25
 var playerCritMulti : float = 2.0
 var playerHPREGEN = 0.0
-var playerMovSpeed = 600
+var playerMovSpeed : int = 600
 
 #mob vars
 var mobHealth = 3.0
@@ -24,6 +24,10 @@ var scoreMulti = 1.0
 var playerLEVEL = 1
 var playerExp = 0
 var expToLvlUp = 100
+
+#COINS
+var HealthCoinsOnScreen = 0
+var SpeedCoinsOnScreen = 0 
 
 func ADD_EXP(amount):
 	playerExp += amount

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c08om84k0pbuj"]
+[gd_scene load_steps=9 format=3 uid="uid://c08om84k0pbuj"]
 
 [ext_resource type="PackedScene" uid="uid://ct6ctnfjhwh25" path="res://player.tscn" id="1_f7jjx"]
 [ext_resource type="Script" path="res://survivors-game.gd" id="1_xmhyq"]
@@ -6,6 +6,12 @@
 [ext_resource type="FontFile" uid="uid://clbly8xqr7kxw" path="res://fonts/Mindsight.ttf" id="4_jyqj4"]
 [ext_resource type="FontFile" uid="uid://bdxdtkcxpa08s" path="res://fonts/Blacknorthdemo-mLE25.otf" id="5_12y4p"]
 [ext_resource type="Theme" uid="uid://dedmc73m6he8n" path="res://texto_basico.tres" id="6_cbym3"]
+
+[sub_resource type="Curve2D" id="Curve2D_l0qjw"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 540, -225, 0, 0, 0, 0, 2312, -181, 0, 0, 0, 0, 2307, 1368, 0, 0, 0, 0, -283, 1323, 0, 0, 0, 0, -268, -157, 0, 0, 0, 0, 344, -210, 0, 0, 0, 0, 540, -225)
+}
+point_count = 7
 
 [sub_resource type="Curve2D" id="Curve2D_2xplw"]
 _data = {
@@ -41,6 +47,15 @@ position = Vector2(1292, 850)
 
 [node name="Player" parent="." instance=ExtResource("1_f7jjx")]
 position = Vector2(953, 534)
+
+[node name="Path2D2" type="Path2D" parent="Player"]
+position = Vector2(-953, -534)
+curve = SubResource("Curve2D_l0qjw")
+
+[node name="CoinPathFollow2D" type="PathFollow2D" parent="Player/Path2D2"]
+unique_name_in_owner = true
+position = Vector2(540, -225)
+rotation = 0.0248256
 
 [node name="ScoreLabel" type="Label" parent="Player"]
 unique_name_in_owner = true
@@ -171,5 +186,9 @@ unique_name_in_owner = true
 wait_time = 0.608
 autostart = true
 
+[node name="CoinTimer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
+[connection signal="timeout" from="CoinTimer" to="." method="_on_coin_timer_timeout"]
