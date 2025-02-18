@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-var player
-var health = 50
-var mobExp = 120
+var player#sol ose declara
+var health = Global.mobBIGHealth
+var mobExp = Global.mobBIGExpValue
 
 signal mob_muere
 const CRIT_LABEL = preload("res://crit_dmg_label.tscn")

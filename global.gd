@@ -13,10 +13,14 @@ var playerHPREGEN = 0.0
 var playerMovSpeed : int = 600
 var playerAtkSpeed : float = 0.4
 
-#mob vars
+### mob vars ###3
 var mobHealth = 3.0
 var mobExpValue = 12
 var mobDmgRate = 30.0
+#big mob vars
+var mobBIGHealth = 12.0
+var mobBIGDmgRate = 50.0
+var mobBIGExpValue = 120
 
 var playerScore = 0
 var scoreMulti = 1.0
@@ -118,9 +122,13 @@ func load_high_scores():
 func MOB_DAMAGE():
 	if playerLEVEL > 5:
 		mobDmgRate = 30.0 + (playerLEVEL * 2)
+		mobBIGDmgRate = 50.0 + (playerLEVEL * 3)
 	else:
 		mobDmgRate = 30.0
+		mobBIGDmgRate = 50.0
 		if playerLEVEL > 10:
 			mobDmgRate = 30.0 + (playerLEVEL * 3)
+			mobBIGDmgRate = 50.0 + (playerLEVEL * 3)
 		else:
 			mobDmgRate = 30.0
+			mobBIGDmgRate = 50.0
