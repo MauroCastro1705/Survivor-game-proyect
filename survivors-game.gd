@@ -62,28 +62,28 @@ func show_alert(msg: String):
 	
 	
 func _ready():
-	var GameScore = 0
-	Score_update(GameScore)
+	GameScore = 0
+	Score_update()
 	get_tree().paused = false
 	Global.HealthCoinsOnScreen = 0
 	Global.SpeedCoinsOnScreen = 0
+	Global.AtkSpeedCoinsOnScreen = 0
 
 
 func _physics_process(_delta):
 	Global.MOB_DAMAGE()
 
+
+### MOB SPAWNER ###
 func _on_mob_timer_timeout():
 	spawn_mob()
 	incrementar_dificultad()
-	gameTimer += 1
-	if gameTimer >= 10:
-		spawn_big_mob()
-		gameTimer = 0
+	Global.GAME_TIMER()
+	if Global.gameTimer == 15:
+		spawn_big_mob()#cada 15 mobs normales sale uno grande
 
-func _on_player_health_depleted():
-	get_tree().change_scene_to_file("res://game_over.tscn")
 
-func Score_update(GameScore):
+func Score_update():
 	%ScoreLabel.text = "Score : " + str(GameScore)
 	%NivelLabel.text = "Jugador nivel : " + str(Global.playerLEVEL)
 	%PlayerName.text = "Jugardor : " + Global.playerNAME
@@ -96,7 +96,7 @@ func Score_increment():
 	var ScoreMult = Global.scoreMulti #revisar esto	
 	GameScore += 1 * ScoreMult
 	Global.playerScore = GameScore
-	Score_update(GameScore)
+	Score_update()
 
 
 func _on_coin_timer_timeout() -> void:
@@ -111,3 +111,6 @@ func _on_tree_timer_timeout() -> void:
 		%CoinPathFollow2D.progress_ratio = randf()
 		new_tree.global_position = %CoinPathFollow2D.global_position
 		add_child(new_tree)
+
+func _on_player_health_depleted():
+	get_tree().change_scene_to_file("res://game_over.tscn")

@@ -39,6 +39,9 @@ var bulletBurstCount = 3
 var bulletBurstDelay = 0.4		
 
 
+#### GAME VARS ###
+var gameTimer = 0
+
 ##### PERKS #####
 @export var auto_target_enemy: bool = false
 var shootTypeSpread: bool = false
@@ -132,3 +135,9 @@ func MOB_DAMAGE():
 		else:
 			mobDmgRate = 30.0
 			mobBIGDmgRate = 50.0
+
+#### GAME FUNCS ####
+func GAME_TIMER():
+	gameTimer += 1
+	if gameTimer >= 15:
+		gameTimer = 0
