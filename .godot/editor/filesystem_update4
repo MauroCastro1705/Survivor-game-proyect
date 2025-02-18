@@ -10,3 +10,8 @@ res://bullet.gd
 res://mob.gd
 res://PowerSpeedUpCoin.tscn
 res://power_up_atk_speed_coin.tscn
+res://Pinetree.tscn
+res://rock_1.tscn
+res://rock_2.tscn
+res://rock_3.tscn
+res://MainMenu.tscn

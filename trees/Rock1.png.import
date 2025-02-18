@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chflg8ihey7es"
-path="res://.godot/imported/coin_26.png-b351f0c424e955e4d2fa8f4e0f7d4574.ctex"
+uid="uid://b3vw5q11vig6x"
+path="res://.godot/imported/Rock1.png-309b88dce9cf2d942a3432e791387ef7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pickups/coin_26.png"
-dest_files=["res://.godot/imported/coin_26.png-b351f0c424e955e4d2fa8f4e0f7d4574.ctex"]
+source_file="res://trees/Rock1.png"
+dest_files=["res://.godot/imported/Rock1.png-309b88dce9cf2d942a3432e791387ef7.ctex"]
 
 [params]
 

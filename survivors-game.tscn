@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c08om84k0pbuj"]
+[gd_scene load_steps=12 format=3 uid="uid://c08om84k0pbuj"]
 
 [ext_resource type="PackedScene" uid="uid://ct6ctnfjhwh25" path="res://player.tscn" id="1_f7jjx"]
 [ext_resource type="Script" path="res://survivors-game.gd" id="1_xmhyq"]
@@ -6,6 +6,9 @@
 [ext_resource type="FontFile" uid="uid://clbly8xqr7kxw" path="res://fonts/Mindsight.ttf" id="4_jyqj4"]
 [ext_resource type="FontFile" uid="uid://bdxdtkcxpa08s" path="res://fonts/Blacknorthdemo-mLE25.otf" id="5_12y4p"]
 [ext_resource type="Theme" uid="uid://dedmc73m6he8n" path="res://texto_basico.tres" id="6_cbym3"]
+[ext_resource type="PackedScene" uid="uid://dsh0xh2q2vr2o" path="res://rock_1.tscn" id="7_aaxxa"]
+[ext_resource type="PackedScene" uid="uid://dt56nixdahbca" path="res://rock_2.tscn" id="8_7miyk"]
+[ext_resource type="PackedScene" uid="uid://bwoilc80sklrl" path="res://rock_3.tscn" id="9_uabaj"]
 
 [sub_resource type="Curve2D" id="Curve2D_l0qjw"]
 _data = {
@@ -194,6 +197,24 @@ autostart = true
 [node name="TreeTimer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
+
+[node name="Rock1" parent="." instance=ExtResource("7_aaxxa")]
+position = Vector2(662, 467)
+
+[node name="Rock4" parent="Rock1" instance=ExtResource("8_7miyk")]
+position = Vector2(1060, -251)
+
+[node name="Rock2" parent="Rock1" instance=ExtResource("7_aaxxa")]
+position = Vector2(968, 134)
+
+[node name="Rock3" parent="Rock1" instance=ExtResource("8_7miyk")]
+position = Vector2(-101, 343)
+
+[node name="Rock3" parent="." instance=ExtResource("9_uabaj")]
+position = Vector2(519, 302)
+
+[node name="Rock3" parent="Rock3" instance=ExtResource("9_uabaj")]
+position = Vector2(644, 701)
 
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]

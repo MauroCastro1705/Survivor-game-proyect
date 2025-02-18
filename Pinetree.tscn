@@ -9,7 +9,7 @@ radius = 27.074
 [node name="StaticBody2D" type="StaticBody2D"]
 
 [node name="GroundShadow" type="Sprite2D" parent="."]
-modulate = Color(0.791999, 0.791999, 0.791999, 1)
+modulate = Color(0.792157, 0.792157, 0.792157, 0.627451)
 position = Vector2(0, -3)
 scale = Vector2(1.21429, 1.23077)
 texture = ExtResource("1_q5egg")

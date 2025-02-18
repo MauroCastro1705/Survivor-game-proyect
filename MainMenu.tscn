@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bjv81dgoelh3n"]
+[gd_scene load_steps=5 format=3 uid="uid://bjv81dgoelh3n"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_2q1j2"]
 [ext_resource type="FontFile" uid="uid://clbly8xqr7kxw" path="res://fonts/Mindsight.ttf" id="1_48gah"]
 [ext_resource type="FontFile" uid="uid://bdxdtkcxpa08s" path="res://fonts/Blacknorthdemo-mLE25.otf" id="2_pqnep"]
+[ext_resource type="Texture2D" uid="uid://t6ec3pvr6pij" path="res://ui-bordersz/PNG/Default/Divider/divider-003.png" id="4_gybom"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -12,12 +13,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2q1j2")
+metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
-modulate = Color(0.123018, 0.266088, 0.104404, 1)
+modulate = Color(0.102194, 0.261838, 0.201856, 1)
 layout_mode = 0
 offset_right = 1921.0
 offset_bottom = 1081.0
+metadata/_edit_lock_ = true
 
 [node name="StartButton" type="Button" parent="ColorRect"]
 layout_mode = 1
@@ -32,7 +35,7 @@ offset_right = 202.5
 offset_bottom = 344.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(50, 31.429, 19.285, 1)
 theme_override_fonts/font = ExtResource("1_48gah")
 theme_override_font_sizes/font_size = 70
 text = "Start Game
@@ -45,15 +48,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -876.0
-offset_top = -470.0
-offset_right = -327.0
-offset_bottom = -371.0
+offset_left = -420.0
+offset_top = -410.0
+offset_right = 404.0
+offset_bottom = -263.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.868358, 0.866927, 0.854182, 1)
 theme_override_fonts/font = ExtResource("2_pqnep")
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 150
 text = "Balas Locas"
 
 [node name="Label3" type="Label" parent="."]
@@ -63,10 +66,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -799.0
-offset_top = -148.0
-offset_right = -250.0
-offset_bottom = -49.0
+offset_left = -599.0
+offset_top = -17.0
+offset_right = -50.0
+offset_bottom = 82.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.868358, 0.866927, 0.854182, 1)
@@ -77,11 +80,23 @@ text = "nombre del jugador"
 [node name="name_input" type="LineEdit" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 558.0
-offset_top = 363.0
-offset_right = 1045.0
-offset_bottom = 466.0
+offset_left = 772.0
+offset_top = 507.0
+offset_right = 1166.0
+offset_bottom = 577.0
+theme_override_font_sizes/font_size = 30
 placeholder_text = "aca pone tu nombre"
 alignment = 1
+
+[node name="Divider-003" type="Sprite2D" parent="."]
+position = Vector2(248, 198)
+scale = Vector2(5.375, 5)
+texture = ExtResource("4_gybom")
+
+[node name="Divider-004" type="Sprite2D" parent="."]
+position = Vector2(1674, 201)
+rotation = -3.14159
+scale = Vector2(5.375, 5)
+texture = ExtResource("4_gybom")
 
 [connection signal="pressed" from="ColorRect/StartButton" to="." method="_on_start_button_pressed"]

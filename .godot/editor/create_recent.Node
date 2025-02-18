@@ -1,4 +1,5 @@
 CollisionShape2D
+StaticBody2D
 Area2D
 Timer
 PathFollow2D
@@ -11,4 +12,3 @@ LineEdit
 ProgressBar
 Button
 CanvasLayer
-Marker2D
