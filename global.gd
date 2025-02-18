@@ -16,7 +16,7 @@ var playerAtkSpeed : float = 0.4
 #mob vars
 var mobHealth = 3.0
 var mobExpValue = 12
-var mobDmgRate = 12.0
+var mobDmgRate = 30.0
 
 var playerScore = 0
 var scoreMulti = 1.0
@@ -26,14 +26,28 @@ var playerLEVEL = 1
 var playerExp = 0
 var expToLvlUp = 100
 
+#### BULLETS ###
+var bulletRange = 1200
+var bulletCant = 3
+var bulletSpeed = 400
+var bulletSpread = 15
+var bulletBurstCount = 1
+var bulletBurstDelay = 0.1		
+
+
+##### PERKS #####
+@export var auto_target_enemy: bool = false
+var shootTypeSpread: bool = false
+var shootTypeNormal: bool = true
+
 #COINS ######
 var HealthCoinsOnScreen = 0
 var SpeedCoinsOnScreen = 0 
 var AtkSpeedCoinsOnScreen = 0
 #valores que aumentan los coins ######
 var HealthCoinValue = 25
-var SpeedCoinValue = 100
-var AtkSpeedCoinValue = 0.02
+var SpeedCoinValue = 40
+var AtkSpeedCoinValue = 0.01
 #### Coin funcs ######
 func HEALTH_COIN():
 	playerHealth = min(playerHealth + HealthCoinValue, playerMaxHealth)
@@ -67,8 +81,8 @@ func LVL_UP():
 	playerExp -= expToLvlUp
 	playerLEVEL += 1
 	expToLvlUp = round(expToLvlUp * 1.2)  # Incremento del 20% en cada nivel
-	playerMaxHealth += 20 + (playerLEVEL * 5)
-	playerAtkDmg += 1 + (playerLEVEL * 0.1)
+	playerMaxHealth += 10 + (playerLEVEL * 2)
+	playerAtkDmg += 1 + (playerLEVEL * 0.03)
 	playerHealth = playerMaxHealth
 	print("subio a nivel = " , playerLEVEL)
 	print("VIDA SUBIO a" , playerMaxHealth)
@@ -103,26 +117,10 @@ func load_high_scores():
 
 func MOB_DAMAGE():
 	if playerLEVEL > 5:
-		mobDmgRate = 12.0 + (playerLEVEL * 2)
+		mobDmgRate = 30.0 + (playerLEVEL * 2)
 	else:
-		mobDmgRate = 12.0
+		mobDmgRate = 30.0
 		if playerLEVEL > 10:
-			mobDmgRate = 12.0 + (playerLEVEL * 3)
+			mobDmgRate = 30.0 + (playerLEVEL * 3)
 		else:
-			mobDmgRate = 12.0
-			if playerLEVEL > 15:
-				mobDmgRate = 12.0 + (playerLEVEL * 4)
-			else:
-				mobDmgRate = 12.0
-				if playerLEVEL > 20:
-					mobDmgRate = 12.0 + (playerLEVEL * 5)
-				else:
-					mobDmgRate = 12.0
-					if playerLEVEL > 25:
-						mobDmgRate = 12.0 + (playerLEVEL * 6)
-					else:
-						mobDmgRate = 12.0
-						if playerLEVEL > 30:
-							mobDmgRate = 12.0 + (playerLEVEL * 7)
-						else:
-							mobDmgRate = 12.0
+			mobDmgRate = 30.0

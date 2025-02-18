@@ -2,8 +2,8 @@ extends Area2D
 var travelled_distance = 0
 
 func _physics_process(delta):
-	const SPEED = 1000
-	const RANGE = 1200
+	var SPEED = Global.bulletSpeed
+	var RANGE = Global.bulletRange
 	var direction = Vector2.RIGHT.rotated(rotation)
 	position += direction * SPEED * delta
 	

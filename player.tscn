@@ -76,11 +76,11 @@ show_percentage = false
 
 [node name="LevelBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
-offset_left = -126.0
-offset_top = -144.0
-offset_right = 238.0
-offset_bottom = -116.0
-scale = Vector2(0.687, 1)
+offset_left = -130.0
+offset_top = -140.0
+offset_right = 234.0
+offset_bottom = -109.0
+scale = Vector2(0.7, 0.7)
 theme_override_font_sizes/font_size = 22
 theme_override_styles/background = SubResource("StyleBoxFlat_u78nl")
 theme_override_styles/fill = SubResource("StyleBoxFlat_8kf8r")
