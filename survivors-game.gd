@@ -1,7 +1,7 @@
 extends Node2D
 
 var GameScore = 0
-
+var gameTimer = 0
 
 
 func spaw_health_coins():
@@ -34,6 +34,13 @@ func spawn_mob():
 	%PathFollow2D.progress_ratio = randf()
 	new_mob.global_position = %PathFollow2D.global_position
 	add_child(new_mob)
+
+func spawn_big_mob():
+	var new_big_mob = preload("res://big_mob.tscn").instantiate()
+	new_big_mob.mob_muere.connect(Score_increment)
+	%PathFollow2D.progress_ratio = randf()
+	new_big_mob.global_position = %PathFollow2D.global_position
+	add_child(new_big_mob)	
 
 func incrementar_dificultad():
 	var dificultad = Global.playerLEVEL
@@ -68,6 +75,10 @@ func _physics_process(_delta):
 func _on_mob_timer_timeout():
 	spawn_mob()
 	incrementar_dificultad()
+	gameTimer += 1
+	if gameTimer >= 10:
+		spawn_big_mob()
+		gameTimer = 0
 
 func _on_player_health_depleted():
 	get_tree().change_scene_to_file("res://game_over.tscn")

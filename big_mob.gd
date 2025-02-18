@@ -1,15 +1,15 @@
 extends CharacterBody2D
 
 var player
-var health = Global.mobHealth
-var mobExp = 12
+var health = 50
+var mobExp = 120
 
 signal mob_muere
 const CRIT_LABEL = preload("res://crit_dmg_label.tscn")
 
 func _ready():
 	player = get_node("/root/Game/Player")
-	%Slime.play_walk()
+	#%BigSlime.play_walk()
 
 
 func _physics_process(_delta):
@@ -29,7 +29,7 @@ func take_damage():
 		#SHOW CRIT funcion GlobalCriticos autoload
 		GlobalCriticos.SHOW_CRIT(global_position)
 		
-	%Slime.play_hurt()
+	%BigSlime.play_hurt()
 	health -= dmgDone
 	if health <= 0:
 		mob_muere.emit()

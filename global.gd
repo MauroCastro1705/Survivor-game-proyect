@@ -31,8 +31,8 @@ var bulletRange = 1200
 var bulletCant = 3
 var bulletSpeed = 400
 var bulletSpread = 15
-var bulletBurstCount = 1
-var bulletBurstDelay = 0.1		
+var bulletBurstCount = 3
+var bulletBurstDelay = 0.4		
 
 
 ##### PERKS #####

@@ -15,3 +15,8 @@ res://rock_1.tscn
 res://rock_2.tscn
 res://rock_3.tscn
 res://MainMenu.tscn
+res://characters/Bigslime/Bigslime.tscn
+res://characters/Bigslime/bigslime.gd
+res://big_mob.tscn
+res://mob.tscn
+res://big_mob.gd
