@@ -20,3 +20,9 @@ res://characters/Bigslime/bigslime.gd
 res://big_mob.tscn
 res://mob.tscn
 res://big_mob.gd
+res://Global_criticos.gd
+res://power_speed_up_coin.gd
+res://power_up_atk_speed_coin.gd
+res://power_up_coin.gd
+res://MSG_label.tscn
+res://crit_dmg_label.tscn

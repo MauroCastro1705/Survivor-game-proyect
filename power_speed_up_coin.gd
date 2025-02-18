@@ -5,4 +5,5 @@ extends Area2D
 func _on_body_entered(_body: Node2D) -> void:    
 	queue_free()
 	Global.SPEED_COIN()
+	GlobalCriticos.SHOW_MSG(global_position, "Speed Up!")
 	
