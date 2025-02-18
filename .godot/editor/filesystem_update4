@@ -8,3 +8,5 @@ res://player.gd
 res://gun.tscn
 res://bullet.gd
 res://mob.gd
+res://PowerSpeedUpCoin.tscn
+res://power_up_atk_speed_coin.tscn

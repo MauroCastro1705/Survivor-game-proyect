@@ -1,19 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://d2h7r0uag1jnr"]
 
 [ext_resource type="Script" path="res://power_up_atk_speed_coin.gd" id="1_ngib1"]
-[ext_resource type="Texture2D" uid="uid://dh8mnu3pa2v6i" path="res://pickups/coin_17.png" id="1_yxmf1"]
+[ext_resource type="Texture2D" uid="uid://n8uw83iwx5bf" path="res://pickups/Atkspeed.png" id="2_a6fiy"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dycn5"]
-radius = 38.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qlfb8"]
+radius = 26.0
+height = 90.0
 
 [node name="PowerUpAtkSpeedCoin" type="Area2D"]
 script = ExtResource("1_ngib1")
 
-[node name="Coin17" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_yxmf1")
+[node name="Atkspeed" type="Sprite2D" parent="."]
+position = Vector2(1, 0)
+texture = ExtResource("2_a6fiy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_dycn5")
+shape = SubResource("CapsuleShape2D_qlfb8")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

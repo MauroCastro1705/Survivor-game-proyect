@@ -1,20 +1,21 @@
 [gd_scene load_steps=4 format=3 uid="uid://dun8w5llcpiq5"]
 
 [ext_resource type="Script" path="res://power_speed_up_coin.gd" id="1_bvroi"]
-[ext_resource type="Texture2D" uid="uid://btgppe773f1wr" path="res://pickups/coin_30.png" id="2_4tk26"]
+[ext_resource type="Texture2D" uid="uid://cta4v1d7jux5j" path="res://pickups/MovementSpeed.png" id="2_nsfbb"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_o6b3d"]
-radius = 33.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5p72n"]
+radius = 26.0
+height = 88.0
 
 [node name="CoinMasVelocidad" type="Area2D"]
 script = ExtResource("1_bvroi")
 
-[node name="Coin30" type="Sprite2D" parent="."]
-scale = Vector2(0.486486, 0.486486)
-texture = ExtResource("2_4tk26")
+[node name="MovementSpeed" type="Sprite2D" parent="."]
+position = Vector2(1, 0)
+texture = ExtResource("2_nsfbb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
-shape = SubResource("CircleShape2D_o6b3d")
+position = Vector2(1, -1)
+shape = SubResource("CapsuleShape2D_5p72n")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
