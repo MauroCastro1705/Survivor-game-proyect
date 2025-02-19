@@ -2,21 +2,25 @@ extends CharacterBody2D
 
 var player#sol ose declara
 var health = Global.bigBossHealth
+var MaxHealth = Global.bigBossMaxHealth
 var mobExp = Global.bigBossExpValue
+var _animated_sprite: AnimatedSprite2D
 
 signal Boss_mob_muere
 const CRIT_LABEL = preload("res://crit_dmg_label.tscn")
 
 func _ready():
 	player = get_node("/root/Game/Player")
-	#%BigSlime.play_walk()
+	_animated_sprite = $AnimatedSprite2D
 
 
 func _physics_process(_delta):
 	var direction = global_position.direction_to(player.global_position)
 	velocity = direction * Global.bigBossVelocity
 	move_and_slide()
-	
+	#_animated_sprite.play("ataque")
+	%Boss_barravida.value = health
+	%Boss_barravida.max_value = MaxHealth
 
 #agregar barra de vida
 
@@ -27,11 +31,12 @@ func take_damage():
 	
 	if randf() < critChance:
 		dmgDone *= dmgMulti  # Aumentar el daño
+		%Boss_barravida.value = health
 		print("daño critico")
 		#SHOW CRIT funcion GlobalCriticos autoload
 		GlobalCriticos.SHOW_CRIT(global_position)
 		
-	%BigSlime.play_hurt()
+	_animated_sprite.play("hurt")
 	health -= dmgDone
 	if health <= 0:
 		Boss_mob_muere.emit()

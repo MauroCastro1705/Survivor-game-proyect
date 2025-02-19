@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://by8akngn1ekh4"]
+[gd_scene load_steps=9 format=3 uid="uid://by8akngn1ekh4"]
 
 [ext_resource type="Script" path="res://mob_bossjuampi.gd" id="1_fioqb"]
 [ext_resource type="Texture2D" uid="uid://lyyhl77mnep6" path="res://characters/BigBoss/bigBoos1.png" id="2_wibke"]
@@ -34,6 +34,12 @@ animations = [{
 radius = 42.0
 height = 186.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wubnf"]
+bg_color = Color(0.152941, 0.168627, 0.188235, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hxhwl"]
+bg_color = Color(0.415686, 0.0980392, 0, 1)
+
 [node name="MobBOSSJUAMPI" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 3
@@ -43,9 +49,18 @@ script = ExtResource("1_fioqb")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2, -37)
 sprite_frames = SubResource("SpriteFrames_b6hhx")
-animation = &"ataque"
-frame_progress = 0.158179
+animation = &"hurt"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(7, -28)
 shape = SubResource("CapsuleShape2D_dlwuq")
+
+[node name="Boss_barravida" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -105.0
+offset_top = -196.0
+offset_right = 106.0
+offset_bottom = -169.0
+theme_override_styles/background = SubResource("StyleBoxFlat_wubnf")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hxhwl")
+value = 100.0

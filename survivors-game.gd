@@ -43,11 +43,11 @@ func spawn_big_mob():
 	add_child(new_big_mob)
 
 func spawn_big_mob_BOSS():
-	var new_big_mob = preload("res://big_mob.tscn").instantiate()
-	new_big_mob.mob_muere.connect(Score_increment.bind(100))
+	var new_big_mob_boss = preload("res://mob_bossjuampi.tscn").instantiate()
+	new_big_mob_boss.Boss_mob_muere.connect(Score_increment.bind(100))
 	%PathFollow2D.progress_ratio = randf()
-	new_big_mob.global_position = %PathFollow2D.global_position
-	add_child(new_big_mob)
+	new_big_mob_boss.global_position = %PathFollow2D.global_position
+	add_child(new_big_mob_boss)
 
 func clear_enemies():
 	# Eliminar todos los enemigos en el grupo "mobs"
@@ -143,3 +143,4 @@ func _on_player_health_depleted():
 func _on_big_boss_timer_timeout() -> void:
 	clear_enemies()
 	spawn_big_mob_BOSS()
+	print("jefe")

@@ -30,6 +30,7 @@ var bigBossVelocity = 100
 var bigBossHealth = 1500
 var bigBossDmgRate = 100.0
 var bigBossExpValue = 500
+var bigBossMaxHealth = 1500
 
 
 var playerScore = 0

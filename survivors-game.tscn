@@ -216,7 +216,8 @@ position = Vector2(519, 302)
 position = Vector2(644, 701)
 
 [node name="BigBossTimer" type="Timer" parent="."]
-wait_time = 500.0
+wait_time = 10.0
+autostart = true
 
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]

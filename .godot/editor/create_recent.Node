@@ -1,3 +1,4 @@
+ProgressBar
 AnimatedSprite2D
 Timer
 Button
@@ -12,4 +13,3 @@ RigidBody2D
 Label
 RichTextLabel
 LineEdit
-ProgressBar
