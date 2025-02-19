@@ -49,7 +49,6 @@ func spawn_big_mob_BOSS():
 	new_big_mob.global_position = %PathFollow2D.global_position
 	add_child(new_big_mob)
 
-
 func clear_enemies():
 	# Eliminar todos los enemigos en el grupo "mobs"
 	for enemy in get_tree().get_nodes_in_group("mobs"):
@@ -71,9 +70,8 @@ func show_alert(msg: String):
 	%MobSpawnAlert.text = msg
 	%MobSpawnAlert.visible = true
 	await get_tree().create_timer(3).timeout
-	%MobSpawnAlert.visible = false
-	
-	
+	%MobSpawnAlert.visible = false	
+
 func _ready():
 	Global.isLevelUpCompleted = true
 	GameScore = 0
@@ -87,8 +85,6 @@ func _ready():
 func _process(_delta) -> void:
 	if Input.is_action_just_pressed("pause"):
 		get_tree().paused = not get_tree().paused
-
-
 
 func _physics_process(_delta):
 	Global.MOB_DAMAGE()
@@ -117,12 +113,10 @@ func Score_increment(points: int):
 	Global.playerScore = GameScore
 	LABELS_update()
 
-
 func _on_coin_timer_timeout() -> void:
 	spaw_health_coins()
 	spaw_speed_coins()
 	spawn_atk_speed_coins()
-
 
 #tree spawner
 func _on_tree_timer_timeout() -> void:	
@@ -145,7 +139,6 @@ func _on_tree_timer_timeout() -> void:
 
 func _on_player_health_depleted():
 	get_tree().change_scene_to_file("res://game_over.tscn")
-
 
 func _on_big_boss_timer_timeout() -> void:
 	clear_enemies()
