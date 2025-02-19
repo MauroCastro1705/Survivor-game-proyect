@@ -27,7 +27,7 @@ var mobBIGExpValue = 120
 
 #### big boss mob vars ####
 var bigBossVelocity = 100
-var bigBossHealth = 1000
+var bigBossHealth = 1500
 var bigBossDmgRate = 100.0
 var bigBossExpValue = 500
 

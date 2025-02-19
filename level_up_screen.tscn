@@ -93,6 +93,7 @@ theme_override_font_sizes/font_size = 37
 text = "hay que jugar mejor"
 
 [node name="MasDmg-button3" type="Button" parent="ColorRect"]
+layout_mode = 0
 offset_left = 933.0
 offset_top = 475.0
 offset_right = 999.0
@@ -103,6 +104,7 @@ position = Vector2(34, 47)
 texture = ExtResource("4_v3yk0")
 
 [node name="MasAtkSpd-button2" type="Button" parent="ColorRect"]
+layout_mode = 0
 offset_left = 761.0
 offset_top = 493.0
 offset_right = 827.0
