@@ -1,10 +1,10 @@
+Timer
 Button
 ColorRect
 CollisionShape2D
 CharacterBody2D
 StaticBody2D
 Area2D
-Timer
 PathFollow2D
 Path2D
 RigidBody2D

@@ -56,7 +56,7 @@ position = Vector2(953, 534)
 position = Vector2(-983, -561)
 curve = SubResource("Curve2D_l0qjw")
 
-[node name="CoinPathFollow2D" type="PathFollow2D" parent="Player/Path2D2"]
+[node name="caminitodearboles" type="PathFollow2D" parent="Player/Path2D2"]
 unique_name_in_owner = true
 position = Vector2(540, -225)
 rotation = 0.0248256
@@ -195,7 +195,6 @@ autostart = true
 autostart = true
 
 [node name="TreeTimer" type="Timer" parent="."]
-wait_time = 2.0
 autostart = true
 
 [node name="Rock1" parent="." instance=ExtResource("7_aaxxa")]
@@ -216,7 +215,11 @@ position = Vector2(519, 302)
 [node name="Rock3" parent="Rock3" instance=ExtResource("9_uabaj")]
 position = Vector2(644, 701)
 
+[node name="BigBossTimer" type="Timer" parent="."]
+wait_time = 500.0
+
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="CoinTimer" to="." method="_on_coin_timer_timeout"]
 [connection signal="timeout" from="TreeTimer" to="." method="_on_tree_timer_timeout"]
+[connection signal="timeout" from="BigBossTimer" to="." method="_on_big_boss_timer_timeout"]

@@ -13,3 +13,4 @@ res://game_over.gd
 res://player.gd
 res://gun.gd
 res://power_up_coin.gd
+res://big_mob.tscn

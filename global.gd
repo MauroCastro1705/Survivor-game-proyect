@@ -12,7 +12,7 @@ var playerCritChance : float = 0.25
 var playerCritMulti : float = 2.0
 var playerHPREGEN = 0.0
 var playerMovSpeed : int = 600
-var playerAtkSpeed : float = 0.4
+var playerAtkSpeed : float = 0.8
 
 ### mob vars ###
 var mobVelocity = 250
@@ -24,6 +24,13 @@ var mobBIGVelocity = 190
 var mobBIGHealth = 12.0
 var mobBIGDmgRate = 70.0
 var mobBIGExpValue = 120
+
+#### big boss mob vars ####
+var bigBossVelocity = 100
+var bigBossHealth = 1000
+var bigBossDmgRate = 100.0
+var bigBossExpValue = 500
+
 
 var playerScore = 0
 var scoreMulti = 1.0
@@ -62,7 +69,7 @@ func RESET_COINS():
 #valores que aumentan los coins ######
 var HealthCoinValue = 25
 var SpeedCoinValue = 40
-var AtkSpeedCoinValue = 0.01
+var AtkSpeedCoinValue = 0.02
 #### Coin funcs ######
 func HEALTH_COIN():
 	playerHealth = min(playerHealth + HealthCoinValue, playerMaxHealth)
@@ -97,14 +104,12 @@ func LVL_UP():
 	playerLEVEL += 1
 	expToLvlUp = round(expToLvlUp * 1.2)  # Incremento del 20% en cada nivel
 	playerMaxHealth += 10 + (playerLEVEL * 2)
-	playerAtkDmg += 1 + (playerLEVEL * 0.03)
 	playerHealth = playerMaxHealth
 	print("subio a nivel = " , playerLEVEL)
 	print("VIDA SUBIO a" , playerMaxHealth)
 	get_tree().paused = true
 	LVL_UP_SCREEN()
 	isLevelUpCompleted = false
-
 	
 func LVL_UP_SCREEN():
 	print("mostrar pantalla de nivel")
