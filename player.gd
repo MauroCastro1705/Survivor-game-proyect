@@ -2,7 +2,8 @@ extends CharacterBody2D
 signal health_depleted
 var health = Global.playerHealth
 
-func _physics_process(delta):	
+func _physics_process(delta):
+	Global.playerPosition = position
 	$LevelBar.value = Global.playerExp
 	$LevelBar.max_value = Global.expToLvlUp
 	$ProgressBar.max_value = Global.playerMaxHealth

@@ -1,7 +1,8 @@
 extends Node
 
 var playerNAME = "jugador"
-
+var playerPosition = Vector2(0, 0)
+var isLevelUpCompleted = true
 ####### player vars ######
 var playerAtkDmg = 1.0
 var playerHealth = 100.0
@@ -13,13 +14,15 @@ var playerHPREGEN = 0.0
 var playerMovSpeed : int = 600
 var playerAtkSpeed : float = 0.4
 
-### mob vars ###3
+### mob vars ###
+var mobVelocity = 250
 var mobHealth = 3.0
 var mobExpValue = 12
 var mobDmgRate = 30.0
 #big mob vars
+var mobBIGVelocity = 190
 var mobBIGHealth = 12.0
-var mobBIGDmgRate = 50.0
+var mobBIGDmgRate = 70.0
 var mobBIGExpValue = 120
 
 var playerScore = 0
@@ -51,6 +54,11 @@ var shootTypeNormal: bool = true
 var HealthCoinsOnScreen = 0
 var SpeedCoinsOnScreen = 0 
 var AtkSpeedCoinsOnScreen = 0
+func RESET_COINS():
+	HealthCoinsOnScreen = 0
+	SpeedCoinsOnScreen = 0
+	AtkSpeedCoinsOnScreen = 0
+
 #valores que aumentan los coins ######
 var HealthCoinValue = 25
 var SpeedCoinValue = 40
@@ -93,9 +101,17 @@ func LVL_UP():
 	playerHealth = playerMaxHealth
 	print("subio a nivel = " , playerLEVEL)
 	print("VIDA SUBIO a" , playerMaxHealth)
+	get_tree().paused = true
+	LVL_UP_SCREEN()
+	isLevelUpCompleted = false
+
 	
-	
-	
+func LVL_UP_SCREEN():
+	print("mostrar pantalla de nivel")
+	var lvlUpScreen = preload("res://level_up_screen.tscn").instantiate()
+	get_tree().get_root().add_child(lvlUpScreen)
+	lvlUpScreen.visible = true
+	lvlUpScreen.global_position = playerPosition
 	
 	
 	#SAVE DATA TOP PLAYERS######
@@ -125,19 +141,19 @@ func load_high_scores():
 func MOB_DAMAGE():
 	if playerLEVEL > 5:
 		mobDmgRate = 30.0 + (playerLEVEL * 2)
-		mobBIGDmgRate = 50.0 + (playerLEVEL * 3)
+		mobBIGDmgRate = 70.0 + (playerLEVEL * 3)
 	else:
 		mobDmgRate = 30.0
-		mobBIGDmgRate = 50.0
+		mobBIGDmgRate = 70.0
 		if playerLEVEL > 10:
 			mobDmgRate = 30.0 + (playerLEVEL * 3)
-			mobBIGDmgRate = 50.0 + (playerLEVEL * 3)
+			mobBIGDmgRate = 70.0 + (playerLEVEL * 3)
 		else:
 			mobDmgRate = 30.0
-			mobBIGDmgRate = 50.0
+			mobBIGDmgRate = 70.0
 
 #### GAME FUNCS ####
 func GAME_TIMER():
 	gameTimer += 1
-	if gameTimer >= 15:
+	if gameTimer >= 16:
 		gameTimer = 0

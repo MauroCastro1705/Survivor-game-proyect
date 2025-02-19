@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://mob.gd" id="1_mh1pi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8tavr"]
-radius = 70.0286
+radius = 60.0083
 
 [node name="Mob" type="CharacterBody2D" groups=["mobs"]]
 collision_layer = 2

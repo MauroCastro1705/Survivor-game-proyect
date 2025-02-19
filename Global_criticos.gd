@@ -1,7 +1,7 @@
 extends Node
 
 const CRIT_LABEL = preload("res://crit_dmg_label.tscn")
-const MSG_LABEL = preload("res://msg_label.tscn")
+const MSG_LABEL = preload("res://MSG_label.tscn")
 ### CRITICOS###
 func SHOW_CRIT(mob_position: Vector2):
 		var crit_label_mob = CRIT_LABEL.instantiate()

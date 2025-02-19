@@ -14,7 +14,7 @@ func _ready():
 
 func _physics_process(_delta):
 	var direction = global_position.direction_to(player.global_position)
-	velocity = direction * 250
+	velocity = direction * Global.mobBIGVelocity
 	move_and_slide()
 	
 	
