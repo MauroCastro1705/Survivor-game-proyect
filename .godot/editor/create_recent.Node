@@ -1,9 +1,9 @@
+Timer
+CollisionShape2D
 ProgressBar
 AnimatedSprite2D
-Timer
 Button
 ColorRect
-CollisionShape2D
 CharacterBody2D
 StaticBody2D
 Area2D
@@ -12,4 +12,3 @@ Path2D
 RigidBody2D
 Label
 RichTextLabel
-LineEdit

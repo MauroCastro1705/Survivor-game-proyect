@@ -1,10 +1,11 @@
 extends CharacterBody2D
 
-var player#sol ose declara
-var health = Global.bigBossHealth
-var MaxHealth = Global.bigBossMaxHealth
-var mobExp = Global.bigBossExpValue
-var _animated_sprite: AnimatedSprite2D
+@onready var player#solo se declara
+@onready var health = Global.bigBossHealth
+@onready var MaxHealth = Global.bigBossMaxHealth
+@onready var mobExp = Global.bigBossExpValue
+@onready var _animated_sprite: AnimatedSprite2D
+@onready var shooting_point = %ShootingPoint
 
 signal Boss_mob_muere
 const CRIT_LABEL = preload("res://crit_dmg_label.tscn")
@@ -22,7 +23,6 @@ func _physics_process(_delta):
 	%Boss_barravida.value = health
 	%Boss_barravida.max_value = MaxHealth
 
-#agregar barra de vida
 
 func take_damage():
 	var dmgDone = Global.playerAtkDmg

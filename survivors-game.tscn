@@ -216,6 +216,7 @@ position = Vector2(519, 302)
 position = Vector2(644, 701)
 
 [node name="BigBossTimer" type="Timer" parent="."]
+unique_name_in_owner = true
 wait_time = 10.0
 autostart = true
 

@@ -18,7 +18,6 @@ func start_shooting_cooldown():
 	await get_tree().create_timer(Global.playerAtkSpeed).timeout
 	can_shoot = true  # Allow shooting again
 
-
 func _physics_process(_delta):
 	if Global.auto_target_enemy:
 		var enemies_in_range = get_overlapping_bodies()
@@ -27,7 +26,6 @@ func _physics_process(_delta):
 	else:
 		look_at(get_global_mouse_position())  # Default: Aim at the mouse
 		crosshair.global_position = get_global_mouse_position()  # Move crosshair to cursor
-
 
 #### SHOOT TYPES####
 func Normal_Shoot():
@@ -61,8 +59,6 @@ func Burst_Fire():
 		new_bullet.global_position = shooting_point.global_position
 		new_bullet.global_rotation = shooting_point.global_rotation
 		get_parent().add_child(new_bullet)
-
-
 
 # Call this function when the skill/effect activates (Switch to Auto-Aim)
 func activate_auto_aim():

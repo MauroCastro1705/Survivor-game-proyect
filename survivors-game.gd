@@ -144,3 +144,5 @@ func _on_big_boss_timer_timeout() -> void:
 	clear_enemies()
 	spawn_big_mob_BOSS()
 	print("jefe")
+	%MobTimer.paused = true
+	%BigBossTimer.paused = true

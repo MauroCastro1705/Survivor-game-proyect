@@ -11,7 +11,7 @@ var playerMaxHealth = 100.0
 var playerCritChance : float = 0.25
 var playerCritMulti : float = 2.0
 var playerHPREGEN = 0.0
-var playerMovSpeed : int = 600
+var playerMovSpeed : int = 300
 var playerAtkSpeed : float = 0.8
 
 ### mob vars ###
@@ -31,6 +31,7 @@ var bigBossHealth = 1500
 var bigBossDmgRate = 100.0
 var bigBossExpValue = 500
 var bigBossMaxHealth = 1500
+var bigBossAtkDmg = 10.0
 
 
 var playerScore = 0
