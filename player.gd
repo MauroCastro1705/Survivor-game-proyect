@@ -28,9 +28,16 @@ func _physics_process(delta):
 			health_depleted.emit()
 			print("Player dead")
 			Global.save_high_score(Global.playerNAME, Global.playerScore, Global.playerLEVEL)
-			
-	
-	
+
+
 func take_damage():
 	var dmgDone = Global.bigBossAtkDmg
 	health -= dmgDone
+	Global.playerHealth = health  # Update the global player health
+	$ProgressBar.value = Global.playerHealth  # Update the progress bar value
+	print("damage take_damage")
+
+	if Global.playerHealth <= 0.0:
+		health_depleted.emit()
+		print("Player dead")
+		Global.save_high_score(Global.playerNAME, Global.playerScore, Global.playerLEVEL)

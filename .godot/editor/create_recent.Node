@@ -1,4 +1,5 @@
 Timer
+Label
 CollisionShape2D
 ProgressBar
 AnimatedSprite2D
@@ -10,5 +11,4 @@ Area2D
 PathFollow2D
 Path2D
 RigidBody2D
-Label
 RichTextLabel

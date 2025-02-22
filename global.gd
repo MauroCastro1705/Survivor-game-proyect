@@ -15,7 +15,7 @@ var playerMovSpeed : int = 300
 var playerAtkSpeed : float = 0.8
 
 ### mob vars ###
-var mobVelocity = 250
+var mobVelocity = 150
 var mobHealth = 3.0
 var mobExpValue = 12
 var mobDmgRate = 30.0
@@ -45,7 +45,7 @@ var expToLvlUp = 100
 #### BULLETS ###
 var bulletRange = 1200
 var bulletCant = 3
-var bulletSpeed = 400
+var bulletSpeed = 500
 var bulletSpread = 15
 var bulletBurstCount = 3
 var bulletBurstDelay = 0.4		

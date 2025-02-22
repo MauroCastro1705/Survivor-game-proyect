@@ -3,6 +3,26 @@ extends Node2D
 var GameScore = 0
 var gameTimer = 0
 @onready var camino = %caminitodearboles
+@onready var labelTiempo = %TiempoAlJefe
+@onready var timerTiempoJefe = %TimerTiempoAlJefe
+var time_left = 8 * 60  # 8 minutos en segundos
+
+func _ready():
+	Global.isLevelUpCompleted = true
+	GameScore = 0
+	LABELS_update()
+	get_tree().paused = false
+	Global.HealthCoinsOnScreen = 0
+	Global.SpeedCoinsOnScreen = 0
+	Global.AtkSpeedCoinsOnScreen = 0
+	set_process_unhandled_input(true)  # Habilita la entrada en pausa
+	timerTiempoJefe.start()
+
+func update_labelTiempo():
+	var minutes = float(time_left) / 60
+	var seconds = time_left % 60
+	labelTiempo.text = "%02d:%02d" % [minutes, seconds]  # Formato MM:SS
+
 
 func spaw_health_coins():
 	if Global.HealthCoinsOnScreen <= 2:
@@ -72,15 +92,7 @@ func show_alert(msg: String):
 	await get_tree().create_timer(3).timeout
 	%MobSpawnAlert.visible = false	
 
-func _ready():
-	Global.isLevelUpCompleted = true
-	GameScore = 0
-	LABELS_update()
-	get_tree().paused = false
-	Global.HealthCoinsOnScreen = 0
-	Global.SpeedCoinsOnScreen = 0
-	Global.AtkSpeedCoinsOnScreen = 0
-	set_process_unhandled_input(true)  # Habilita la entrada en pausa
+
 
 func _process(_delta) -> void:
 	if Input.is_action_just_pressed("pause"):
@@ -140,9 +152,20 @@ func _on_tree_timer_timeout() -> void:
 func _on_player_health_depleted():
 	get_tree().change_scene_to_file("res://game_over.tscn")
 
-func _on_big_boss_timer_timeout() -> void:
+func LLEGA_EL_JEFE() -> void:
 	clear_enemies()
 	spawn_big_mob_BOSS()
 	print("jefe")
 	%MobTimer.paused = true
 	%BigBossTimer.paused = true
+
+
+func _on_timer_tiempo_al_jefe_timeout() -> void:
+	if time_left > 0:
+		time_left -= 1
+		update_labelTiempo()
+	else:
+		timerTiempoJefe.stop()  # Detener el Timer
+		labelTiempo.text = "Encuentro con el jefe"  # Cambiar mensaje
+		labelTiempo.add_theme_color_override("font_color", Color.RED)  # Asegurar color rojo
+		LLEGA_EL_JEFE()
