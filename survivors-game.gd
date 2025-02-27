@@ -5,7 +5,7 @@ var gameTimer = 0
 @onready var camino = %caminitodearboles
 @onready var labelTiempo = %TiempoAlJefe
 @onready var timerTiempoJefe = %TimerTiempoAlJefe
-var time_left = 8 * 60  # 8 minutos en segundos
+var time_left = 1 * 60  # 8 minutos en segundos
 
 func _ready():
 	Global.isLevelUpCompleted = true
@@ -18,11 +18,18 @@ func _ready():
 	set_process_unhandled_input(true)  # Habilita la entrada en pausa
 	timerTiempoJefe.start()
 
+func _process(_delta) -> void:
+	if Input.is_action_just_pressed("pause"):
+		get_tree().paused = not get_tree().paused
+
+func _physics_process(_delta):
+	Global.MOB_DAMAGE()
+
+
 func update_labelTiempo():
 	var minutes = float(time_left) / 60
 	var seconds = time_left % 60
 	labelTiempo.text = "%02d:%02d" % [minutes, seconds]  # Formato MM:SS
-
 
 func spaw_health_coins():
 	if Global.HealthCoinsOnScreen <= 2:
@@ -76,13 +83,13 @@ func clear_enemies():
 
 func incrementar_dificultad():
 	var dificultad = Global.playerLEVEL
-	if dificultad == 4:
+	if dificultad == 9:
 		%MobTimer.wait_time = 0.4
 		show_alert("!Los Enemigos vienen mas rapido!")
-	if dificultad == 8:
+	if dificultad == 16:
 		%MobTimer.wait_time = 0.3
 		show_alert("!Los Enemigos vienen aun mas rapido!")
-	if dificultad == 14:
+	if dificultad == 21:
 		%MobTimer.wait_time = 0.2
 		show_alert("!Los Enemigos vienen muchisimo mas rapido!")
 		
@@ -92,14 +99,6 @@ func show_alert(msg: String):
 	await get_tree().create_timer(3).timeout
 	%MobSpawnAlert.visible = false	
 
-
-
-func _process(_delta) -> void:
-	if Input.is_action_just_pressed("pause"):
-		get_tree().paused = not get_tree().paused
-
-func _physics_process(_delta):
-	Global.MOB_DAMAGE()
 
 ### MOB SPAWNER ###
 func _on_mob_timer_timeout():
@@ -158,7 +157,6 @@ func LLEGA_EL_JEFE() -> void:
 	print("jefe")
 	%MobTimer.paused = true
 	%BigBossTimer.paused = true
-
 
 func _on_timer_tiempo_al_jefe_timeout() -> void:
 	if time_left > 0:
