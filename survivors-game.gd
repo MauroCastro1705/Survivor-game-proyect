@@ -105,7 +105,7 @@ func _on_mob_timer_timeout():
 	spawn_mob()
 	incrementar_dificultad()
 	Global.GAME_TIMER()
-	if Global.playerScore > 50 and Global.gameTimer == 15:
+	if Global.playerScore > 20 and Global.gameTimer == 10:
 		spawn_big_mob()#cada 15 mobs normales sale uno grande
 		Global.RESET_COINS()
 
